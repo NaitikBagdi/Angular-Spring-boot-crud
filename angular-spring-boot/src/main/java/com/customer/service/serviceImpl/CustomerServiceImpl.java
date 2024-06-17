@@ -63,7 +63,6 @@ public class CustomerServiceImpl implements CustomerService {
 		return response;
 	}
 
-
 	// Deletes a customer by ID
 	@Override
 	public void deleteCustomer(Long id) {
@@ -73,7 +72,6 @@ public class CustomerServiceImpl implements CustomerService {
 			logger.severe("Exception occurred while deleting customer: " + e.getMessage());
 		}
 	}
-
 
 	// Checks if the provided email already exists in the database, excluding the given ID
 	@Override
@@ -90,7 +88,6 @@ public class CustomerServiceImpl implements CustomerService {
 		}
 		return duplicateEmail;
 	}
-
 
 	// Checks if the provided mobile number already exists in the database, excluding the given ID
 	@Override
