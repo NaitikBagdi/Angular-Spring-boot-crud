@@ -14,6 +14,7 @@ export class CustomerTableService {
   getAllCustomer(): Observable<Customer[]> {
     return this.http.get<Customer[]>(`${this.getApiUrl}`);
   }
+  
   saveCustomer(customer?: Customer): Observable<any> {
     return this.http.post(`${this.getApiUrl}`, customer).pipe(
       catchError(error => throwError(error))
@@ -31,4 +32,5 @@ export class CustomerTableService {
   deleteCustomer(customerId: number): Observable<any> {
     return this.http.delete<object>(`${this.getApiUrl}/${customerId}`);
   }
+
 }
