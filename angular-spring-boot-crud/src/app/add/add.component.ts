@@ -6,7 +6,6 @@ import { Customer } from '../customer';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { customeValidator } from '../customeValidator/customevalidator.service';
 
-
 @Component({
   selector: 'app-add',
   templateUrl: './add.component.html',
@@ -17,6 +16,7 @@ export class AddComponent implements OnInit {
   customer: Customer = new Customer();
   loading: boolean = false;
   isEditMode: boolean = false;
+
   constructor(
     private ref: MatDialogRef<AddComponent>,
     private fb: FormBuilder,
@@ -30,9 +30,11 @@ export class AddComponent implements OnInit {
       this.isEditMode = true;
     }
   }
+
   ngOnInit(): void {
     this.customerForm();
   }
+
   customerForm(){
     this.form = this.fb.group({ 
       id:[this.data ? this.data.id : '' ],
@@ -46,8 +48,9 @@ export class AddComponent implements OnInit {
       addressOne: [this.data ? this.data.addressOne: '', [Validators.required, Validators.minLength(2), Validators.maxLength(70)]],
       addressTwo: [this.data ? this.data.addresstwo: '', [Validators.minLength(2), Validators.maxLength(70)]]
     });
-  } 
-    // Define the filter function
+  }
+
+    // Define the filter function for disable feature date based on the current date
     dateFilter = (date: Date | null): boolean => {
       // Disable dates in the future
       return date ? date <= new Date() : false;
@@ -125,4 +128,5 @@ private showSuccessMessage(response:any,action: string): void {
       }
     }
   }
+
 }
