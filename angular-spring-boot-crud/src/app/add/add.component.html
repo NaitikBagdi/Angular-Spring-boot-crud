@@ -54,7 +54,7 @@
           <mat-icon matSuffix>call</mat-icon>
           <mat-error *ngIf="form.get('mobile')?.hasError('required')">Mobile number required</mat-error>
           <mat-error *ngIf="form.get('mobile')?.hasError('minlength')">Minimum 10 digit required</mat-error>
-          <mat-error *ngIf="form.get('mobile')?.hasError('maxLength')">Miximum 17 digit required</mat-error>
+          <mat-error *ngIf="form.get('mobile')?.hasError('maxlength')">Miximum 17 digit required</mat-error>
           <mat-error *ngIf="form.get('mobile')?.hasError('duplicate')">Mobile number already exists</mat-error>
         </mat-form-field>
 
@@ -95,7 +95,7 @@
       <div class="address">
         <mat-form-field appearance="outline" class="full-width"
           [color]="form.get('addressOne')?.invalid && form.get('addressOne')?.touched ? 'warn' : 'primary'">
-          <mat-label>Address 1</mat-label>
+          <mat-label>Address One</mat-label>
           <textarea matInput formControlName="addressOne"></textarea>
           <mat-error *ngIf="form.get('addressOne')?.hasError('required')">Address Two is required</mat-error>
           <mat-error *ngIf="form.get('addressOne')?.hasError('minlength')">Minimum 2 characters required</mat-error>
@@ -105,7 +105,7 @@
 
       <div class="address">
         <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Address 2</mat-label>
+          <mat-label>Address Two</mat-label>
           <textarea matInput formControlName="addressTwo"></textarea>
           <mat-error *ngIf="form.get('addressTwo')?.hasError('minlength')">Minimum 2 characters required</mat-error>
           <mat-error *ngIf="form.get('addressTwo')?.hasError('maxlength')">Maximum 70 characters allowed</mat-error>
