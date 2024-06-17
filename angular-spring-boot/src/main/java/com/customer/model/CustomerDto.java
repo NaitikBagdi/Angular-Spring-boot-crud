@@ -60,11 +60,12 @@ public class CustomerDto {
 	 * The primary address of the customer. Must not be null and must be between 2 and 70 characters long
 	 */
 	@NotNull(message = "AddressOne number is required")
-	@Size(min = 2, max = 70, message = "Address1 must be between 2 and 70 characters")
+	@Size(min = 2, max = 70, message = "Address one must be between 2 and 70 characters")
 	private String addressOne;
 
 	/**
-	 * The secondary address of the customer. Can be null and must be between 2 and 70 characters long if provided.
+	 * The secondary address of the customer
+	 * Can be null and must be between 2 and 70 characters long if provided.
 	 */
 	private String addressTwo;
 
