@@ -1,0 +1,125 @@
+<div class="form-body">
+  <div mat-dialog-title class="dialog-header">
+    <span>{{data ? 'Edit Customer' : 'Add Customer'}}</span>
+    <input type="text" style="position: absolute; opacity: 0;" autofocus>
+    <button mat-icon-button [mat-dialog-close]="false">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <div mat-dialog-content class="content">
+    <form [formGroup]="form" (ngSubmit)="addCustomer()">
+      <div class="row1">
+        <mat-form-field appearance="outline" class="full-width"
+          [color]="form.get('firstName')?.invalid && form.get('firstName')?.touched ? 'warn' : 'primary'">
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="firstName">
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-error *ngIf="form.get('firstName')?.hasError('required')">First Name is required</mat-error>
+          <mat-error
+            *ngIf="form.get('firstName')?.hasError('minlength') && !form.get('firstName')?.hasError('invalidCharacters')">Minimum
+            2 characters required</mat-error>
+          <mat-error *ngIf="form.get('firstName')?.hasError('maxlength')">Maximum 30 characters allowed</mat-error>
+          <mat-error *ngIf="form.get('firstName')?.hasError('invalidCharacters')">Only alphabets allowed</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width"
+          [color]="form.get('lastName')?.invalid && form.get('lastName')?.touched ? 'warn' : 'primary'">
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lastName">
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-error *ngIf="form.get('lastName')?.hasError('required')">Last Name is required</mat-error>
+          <mat-error
+            *ngIf="form.get('lastName')?.hasError('minlength')&& !form.get('lastName')?.hasError('invalidCharacters')">Minimum
+            2 characters required</mat-error>
+          <mat-error *ngIf="form.get('lastName')?.hasError('maxlength')">Maximum 30 characters allowed</mat-error>
+          <mat-error *ngIf="form.get('lastName')?.hasError('invalidCharacters')">Only alphabets and spaces are
+            allowed</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="gender">
+        <mat-radio-group formControlName="gender">
+          <span>Gender:</span>
+          <mat-radio-button [value]="1">Male</mat-radio-button>
+          <mat-radio-button [value]="0">Female</mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+      <div class="row">
+        <mat-form-field appearance="outline" class="full-width"
+          [color]="form.get('mobile')?.invalid && form.get('mobile')?.touched ? 'warn' : 'primary'">
+          <mat-label>Mobile</mat-label>
+          <input matInput formControlName="mobile">
+          <mat-icon matSuffix>call</mat-icon>
+          <mat-error *ngIf="form.get('mobile')?.hasError('required')">Mobile number required</mat-error>
+          <mat-error *ngIf="form.get('mobile')?.hasError('minlength')">Minimum 10 digit required</mat-error>
+          <mat-error *ngIf="form.get('mobile')?.hasError('maxLength')">Miximum 17 digit required</mat-error>
+          <mat-error *ngIf="form.get('mobile')?.hasError('duplicate')">Mobile number already exists</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width"
+          [color]="form.get('email')?.invalid && form.get('email')?.touched ? 'warn' : 'primary'">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email">
+          <mat-icon matSuffix>email</mat-icon>
+          <mat-error *ngIf="form.get('email')?.hasError('required')">Email is required</mat-error>
+          <mat-error *ngIf="form.get('email')?.hasError('pattern')">Invalid email</mat-error>
+          <mat-error *ngIf="form.get('email')?.hasError('duplicate')">Email already exists</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="row">
+        <mat-form-field appearance="outline" class="full-width"
+          [color]="form.get('age')?.invalid && form.get('age')?.touched ? 'warn' : 'primary'">
+          <mat-label>Age</mat-label>
+          <input matInput formControlName="age">
+          <mat-error *ngIf="form.get('age')?.hasError('required')">Age is required</mat-error>
+          <mat-error *ngIf="form.get('age')?.hasError('min')">Minimum 1 digit required</mat-error>
+          <mat-error *ngIf="form.get('age')?.hasError('max')">Maximum 2 digits allowed</mat-error>
+          <mat-error *ngIf="form.get('age')?.hasError('pattern')">Only numbers
+            allowed</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width"
+          [color]="form.get('dob')?.invalid && form.get('dob')?.touched ? 'warn' : 'primary'">
+          <mat-label>Birth date</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="dob" [matDatepickerFilter]="dateFilter" readonly>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="form.get('dob')?.hasError('required')">Birth date is required</mat-error>
+          <mat-error *ngIf="form.get('dob')?.hasError('invalidDateOfBirth')">Invalid date of birth format</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="address">
+        <mat-form-field appearance="outline" class="full-width"
+          [color]="form.get('addressOne')?.invalid && form.get('addressOne')?.touched ? 'warn' : 'primary'">
+          <mat-label>Address 1</mat-label>
+          <textarea matInput formControlName="addressOne"></textarea>
+          <mat-error *ngIf="form.get('addressOne')?.hasError('required')">Address Two is required</mat-error>
+          <mat-error *ngIf="form.get('addressOne')?.hasError('minlength')">Minimum 2 characters required</mat-error>
+          <mat-error *ngIf="form.get('addressOne')?.hasError('maxlength')">Maximum 700 characters allowed</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="address">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Address 2</mat-label>
+          <textarea matInput formControlName="addressTwo"></textarea>
+          <mat-error *ngIf="form.get('addressTwo')?.hasError('minlength')">Minimum 2 characters required</mat-error>
+          <mat-error *ngIf="form.get('addressTwo')?.hasError('maxlength')">Maximum 70 characters allowed</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div mat-dialog-actions class="save-button">
+        <button type="submit" mat-raised-button color="primary"
+          [disabled]="form.invalid || loading|| (isEditMode && !form.dirty)">
+          <span *ngIf="!loading">Save</span>
+          <mat-spinner *ngIf="loading" diameter="20" color="accent" style="display: inline-block;"></mat-spinner>
+        </button>
+        <button style="cursor: pointer;" type="button" mat-raised-button color="warn" [mat-dialog-close]="false">Close</button>
+      </div>
+    </form>
+  </div>
+</div>

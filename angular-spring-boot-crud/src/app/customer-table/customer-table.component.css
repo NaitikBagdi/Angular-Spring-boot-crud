@@ -1,0 +1,36 @@
+.mat-cell {
+  padding: 50px;
+}
+
+.table-width {
+  width: 80%;
+}
+
+.main-body {
+  padding-top: '20px';
+  max-width: '1248px';
+  margin: 0, auto;
+}
+
+.text-container {
+  width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.text-container,
+.text:hover {
+  cursor: pointer;
+}
+
+::ng-deep .snackbar-success {
+  --mdc-snackbar-container-color: #ff2e2e;
+  --mdc-snackbar-supporting-text-color: #ffff;
+}
+
+.delete-box-button {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
