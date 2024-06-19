@@ -40,10 +40,8 @@ export class CustomerTableComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild('confirmDeleteDialog') confirmDeleteDialog: any;
 
-
   ngOnInit(): void {
     this.getAllCustomer();
-
   }
 
   formatDate(date: Date | null): string {
