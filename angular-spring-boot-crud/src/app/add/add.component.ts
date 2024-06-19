@@ -97,7 +97,7 @@ export class AddComponent implements OnInit {
     }
   }
 
-private showSuccessMessage(response:any,action: string): void {
+private showSuccessMessage(response:any, action:string): void {
     const message = action === 'update' ? // Simplified success message handling
       `Customer ${response.firstName} ${response.lastName} updated successfully` :
       `Customer ${response.firstName} ${response.lastName} added successfully`;
