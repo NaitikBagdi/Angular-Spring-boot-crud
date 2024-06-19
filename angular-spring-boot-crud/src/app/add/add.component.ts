@@ -82,7 +82,6 @@ export class AddComponent implements OnInit {
       } else {
         this.customerTableService.saveCustomer(this.form.value).subscribe({
           next: (response) => { // Change: used object literal form of subscribe
-            debugger
             this.showSuccessMessage(response,'add');
             this.ref.close(true);
           },
