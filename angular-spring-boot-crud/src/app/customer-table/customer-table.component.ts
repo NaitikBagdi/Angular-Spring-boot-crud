@@ -69,7 +69,6 @@ export class CustomerTableComponent implements OnInit {
 
   editCustomer(data: any) {
     if (this.isDialogOpen) return;
-
     this.isDialogOpen = true;
 
     const dialogConfig: MatDialogConfig = {
@@ -78,15 +77,15 @@ export class CustomerTableComponent implements OnInit {
       data,
     };
     const dialogRef = this.dialog.open(AddComponent, dialogConfig);
-    dialogRef.afterClosed().subscribe({
-      next: (value) => {
-        this.isDialogOpen = false;
-        if (value) {
-          this.getAllCustomer();
-        }
-      },
-    });
-  }
+      dialogRef.afterClosed().subscribe({
+        next: (value) => {
+          this.isDialogOpen = false;
+          if (value) {
+            this.getAllCustomer();
+          }
+        },
+      });
+    }
   getAllCustomer() {
     this.customerService.getAllCustomer().subscribe({
       next: (res: Customer[]) => {
